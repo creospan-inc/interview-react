@@ -47,7 +47,7 @@ Fixed the following CSS issues:
 - **Flex Layout Issue**: The tags at the bottom aren't evenly sized
 - **White Text**: The purple card should have white text while the tags should have black text
 
-### 5. Intersection Observer
+### 5. Scroll into View
 **File:** `src/challenge5/ObserverComponent.tsx`
 
 Implement functionality to detect when elements scroll into view.
