@@ -1,9 +1,9 @@
-import {User} from "./types";
+import { AdminUser, RegularUser } from "./types";
 
 /**
  * returns id of newly created user
  */
-export function create_user(data:Pick<User, 'type' | 'name' | 'email'>):string{
+export function create_user(data: Pick<RegularUser | AdminUser, 'type' | 'name' | 'email'>): string {
     const id = stub_database_call({
         name: data.name,
         type: data.type,
@@ -13,6 +13,6 @@ export function create_user(data:Pick<User, 'type' | 'name' | 'email'>):string{
     return id;
 }
 
-function stub_database_call(data:Record<string, unknown>){
+function stub_database_call(data: Record<string, unknown>) {
     return Date.now().toString();
 }
