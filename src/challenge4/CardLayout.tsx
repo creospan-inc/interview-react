@@ -57,7 +57,7 @@ const TagContainer = styled.div`
   display: flex;
   gap: 10px;
   margin-top: 15px;
-  
+  color: black;
   /* Tags should be equal width but there's a flex issue */
   & > span {
     flex: 1;
@@ -65,11 +65,11 @@ const TagContainer = styled.div`
   }
   
   & > span:first-child {
-    flex: 3;
+    flex: 1;
   }
   
   & > span:last-child {
-    flex: 0.5;
+    flex: 1;
   }
 `;
 const Tag = styled.span`
@@ -90,7 +90,7 @@ const Modal = styled.div<{ show: boolean }>`
   padding: 30px;
   border-radius: 8px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  z-index: ${props => props.show ? '500' : '-1'};
+  z-index: ${props => props.show ? '9999' : '-1'};
   opacity: ${props => props.show ? '1' : '0'};
   min-width: 300px;
 `;
