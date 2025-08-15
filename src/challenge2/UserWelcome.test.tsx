@@ -1,10 +1,26 @@
-import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import UserWelcome from './UserWelcome';
+import { GlobalState, GlobalStateProvider } from './useGlobalState';
+
+const state: GlobalState = {
+  currentUser: null,
+  theme: 'light',
+  isAuthenticated: false
+};
 
 describe('UserWelcome', () => {
+  const adminState: GlobalState = {
+    ...state,
+    isAuthenticated: true,
+    currentUser: {
+      type: 'admin',
+      name: 'John Doe',
+      email: 'jd@gmail.com',
+      id: 1
+    }
+  }
   it('should show welcome message when button is clicked and user is logged in', () => {
-    render(<UserWelcome />);
+    render(<GlobalStateProvider state={adminState}><UserWelcome /></GlobalStateProvider>);
 
     // Click the button to show welcome message
     fireEvent.click(screen.getByTestId('show-welcome-button'));
@@ -16,8 +32,9 @@ describe('UserWelcome', () => {
   });
 
   it('should show login prompt when no user is logged in', () => {
-    render(<UserWelcome />);
+    render(<GlobalStateProvider state={state}><UserWelcome /></GlobalStateProvider>);
 
+    // debugger
     fireEvent.click(screen.getByTestId('show-welcome-button'));
 
     expect(screen.getByTestId('welcome-message')).toBeInTheDocument();

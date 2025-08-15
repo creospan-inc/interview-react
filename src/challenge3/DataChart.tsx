@@ -11,9 +11,6 @@ interface Props {
 }
 
 const DataChart: React.FC<Props> = ({ data }) => {
-  useEffect(() => {
-    console.log('Chart effect running - rendering chart');
-  }, [data]);
 
   return (
     <div>

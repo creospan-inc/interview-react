@@ -1,6 +1,7 @@
 import React from 'react';
-import { Outlet, Link, useLocation } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
+import ErrorBoundary from '../components/ErrorBoundary';
 
 const TabContainer = styled.div`
   border-bottom: 2px solid #ecf0f1;
@@ -12,7 +13,7 @@ const TabList = styled.div`
   gap: 1rem;
 `;
 
-const Tab = styled(Link)<{ $active: boolean }>`
+const Tab = styled(Link) <{ $active: boolean }>`
   padding: 0.5rem 1rem;
   text-decoration: none;
   color: ${props => props.$active ? '#3498db' : '#7f8c8d'};
@@ -49,9 +50,11 @@ const UsersPage: React.FC = () => {
         </TabList>
       </TabContainer>
 
-        <ContentArea>
+      <ContentArea>
+        <ErrorBoundary fallback={<div>Something went wrong at the app level!</div>}>
           <Outlet />
-        </ContentArea>
+        </ErrorBoundary>
+      </ContentArea>
     </div>
   );
 };

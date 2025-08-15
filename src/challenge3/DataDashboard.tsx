@@ -19,13 +19,13 @@ const DataDashboard: React.FC = () => {
     
     setTimeout(() => {
       setData({
-        sales: [100, 200, 150, 300],
+        sales: [100, 200, 150, new Date().valueOf()],
         customers: [50, 75, 60, 90],
         revenue: [1000, 2000, 1500, 3000]
       });
       setLoading(false);
     }, 1000);
-  }, [filters.dateRange, filters.category, data]);
+  }, [filters]);
 
   useEffect(() => {
     console.log('Data processing effect running');
@@ -33,7 +33,7 @@ const DataDashboard: React.FC = () => {
       const processedData = data.sales.map(sale => sale * 1.1);
       console.log('Processed sales data:', processedData);
     }
-  }, [data, filters]);
+  }, [data]);
 
   return (
     <div>
