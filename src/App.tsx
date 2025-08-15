@@ -10,31 +10,39 @@ import ObserverComponent from "./challenge5/ObserverComponent";
 import DashboardComponent from "./challenge7/ComplexComponent";
 import UserList from "./challenge6/UserList";
 import CreateUser from "./challenge6/CreateUser";
+import { GlobalState, GlobalStateProvider } from './challenge2/useGlobalState';
 
 const App: React.FC = () => {
+  const state: GlobalState = {
+    currentUser: null,
+    theme: 'light',
+    isAuthenticated: false
+  };
   return (
-    <ErrorBoundary fallback={<div>Something went wrong at the app level!</div>}>
-      <Router>
-        <Routes>
-          <Route path="/" element={<AppLayout />}>
-            <Route index element={<Navigate to="/dashboard" replace />} />
-            <Route path="dashboard" element={<DataDashboard />} />
+    <GlobalStateProvider state={state}>
+      <ErrorBoundary fallback={<div>Something went wrong at the app level!</div>}>
+        <Router >
+          <Routes>
+            <Route path="/" element={<AppLayout />}>
+              <Route index element={<Navigate to="/dashboard" replace />} />
+              <Route path="dashboard" element={<DataDashboard />} />
+              
+              {/* Users section with nested routes */}
+              <Route path="users" element={<UsersPage />}>
+                <Route index element={<Navigate to="list" replace />} />
+                <Route path="list" element={<UserList />} />
+                <Route path="create" element={<CreateUser />} />
+                <Route path="reports" element={<UserReports />} />
+              </Route>
 
-            {/* Users section with nested routes */}
-            <Route path="users" element={<UsersPage />}>
-              <Route index element={<Navigate to="list" replace />} />
-              <Route path="list" element={<UserList />} />
-              <Route path="create" element={<CreateUser />} />
-              <Route path="reports" element={<UserReports />} />
+              <Route path="challenges/css" element={<CardLayout />} />
+              <Route path="challenges/observer" element={<ObserverComponent />} />
+              <Route path="challenges/complex" element={<DashboardComponent />} />
             </Route>
-
-            <Route path="challenges/css" element={<CardLayout />} />
-            <Route path="challenges/observer" element={<ObserverComponent />} />
-            <Route path="challenges/complex" element={<DashboardComponent />} />
-          </Route>
-        </Routes>
-      </Router>
-    </ErrorBoundary>
+          </Routes>
+        </Router>
+      </ErrorBoundary >
+    </GlobalStateProvider >
   );
 };
 

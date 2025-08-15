@@ -1,7 +1,7 @@
 import {createContext, ReactElement, useContext} from 'react';
 import {AdminUser, RegularUser, User} from "../challenge1/types";
 
-interface GlobalState {
+export interface GlobalState {
   currentUser: AdminUser | RegularUser | null;
   theme: 'light' | 'dark';
   isAuthenticated: boolean;
