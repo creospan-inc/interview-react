@@ -8,7 +8,7 @@ interface DashboardData {
   revenue: number[];
 }
 
-function magicBackendApi(range:string, category: string){
+function magicBackendApi(range:string, category: string): Promise<DashboardData>{
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({
@@ -29,7 +29,7 @@ const DataDashboard: React.FC = () => {
     console.log('Dashboard effect running - fetching data');
     setLoading(true);
 
-    magicBackendApi(filters.dataRange, filters.category).then((response) => {
+    magicBackendApi(filters.dateRange, filters.category).then((response) => {
       setData(response);
       setLoading(false);
     });
