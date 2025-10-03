@@ -44,8 +44,8 @@ Optimize component re-rendering caused by useEffect dependency issues (reduce th
 
 Fixed the following CSS issues:
 - **Stacking Context Problem**: Modal (click add project) appears behind the first card (make screen smaller)
-- **Flex Layout Issue**: The tags at the bottom aren't evenly sized
-- **White Text**: The purple card should have white text while the tags should have black text
+- **Flex Layout Issue**: The tags at the bottom of each card aren't evenly sized
+- **White Text**: The purple card should have white body text while the tags should have black text
 
 ### 5. Scroll into View
 **File:** `src/challenge5/ObserverComponent.tsx`
