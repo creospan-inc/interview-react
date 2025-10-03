@@ -9,11 +9,15 @@ interface DashboardData {
 }
 
 function magicBackendApi(range:string, category: string){
-  return {
-    sales: [100, 200, 150, 300],
-    customers: [50, 75, 60, 90],
-    revenue: [1000, 2000, 1500, 3000]
-  };
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({
+        sales: [100, 200, 150, 300],
+        customers: [50, 75, 60, 90],
+        revenue: [1000, 2000, 1500, 3000]
+      });
+    }, 1000);
+  });
 }
 
 const DataDashboard: React.FC = () => {
@@ -24,13 +28,11 @@ const DataDashboard: React.FC = () => {
   useEffect(() => {
     console.log('Dashboard effect running - fetching data');
     setLoading(true);
-    
-    setTimeout(() => {
-      const response = magicBackendApi(filters.dataRange, filters.category);
 
+    magicBackendApi(filters.dataRange, filters.category).then((response) => {
       setData(response);
       setLoading(false);
-    }, 1000);
+    });
   }, [filters.dateRange, filters.category, data]);
 
   useEffect(() => {
