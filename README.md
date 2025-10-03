@@ -43,7 +43,7 @@ Optimize component re-rendering caused by useEffect dependency issues (reduce th
 **File:** `src/challenge4/CardLayout.tsx`
 
 Fixed the following CSS issues:
-- **Stacking Context Problem**: Modal appears behind the first card
+- **Stacking Context Problem**: Modal (click add project) appears behind the first card (make screen smaller)
 - **Flex Layout Issue**: The tags at the bottom aren't evenly sized
 - **White Text**: The purple card should have white text while the tags should have black text
 
