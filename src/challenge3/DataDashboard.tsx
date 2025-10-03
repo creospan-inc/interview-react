@@ -8,6 +8,14 @@ interface DashboardData {
   revenue: number[];
 }
 
+function magicBackendApi(range:string, category: string){
+  return {
+    sales: [100, 200, 150, 300],
+    customers: [50, 75, 60, 90],
+    revenue: [1000, 2000, 1500, 3000]
+  };
+}
+
 const DataDashboard: React.FC = () => {
   const [data, setData] = useState<DashboardData>({ sales: [], customers: [], revenue: [] });
   const [filters, setFilters] = useState({ dateRange: '30d', category: 'all' });
@@ -18,11 +26,9 @@ const DataDashboard: React.FC = () => {
     setLoading(true);
     
     setTimeout(() => {
-      setData({
-        sales: [100, 200, 150, 300],
-        customers: [50, 75, 60, 90],
-        revenue: [1000, 2000, 1500, 3000]
-      });
+      const response = magicBackendApi(filters.dataRange, filters.category);
+
+      setData(response);
       setLoading(false);
     }, 1000);
   }, [filters.dateRange, filters.category, data]);
