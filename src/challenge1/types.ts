@@ -6,14 +6,14 @@ import {ReactElement} from "react";
 export type AdminUser = {
     type: 'admin';
     id: number;
-    name: `${string} ${string}`; // e.g. "John Doe"
+    name: `${string} ${string}`;
     email: string;
 };
 
 export type RegularUser = {
     type: 'regular';
     id: number;
-    name: `${string} ${string}`; // e.g. "John Doe"
+    name: `${string} ${string}`;
     email: string;
     subscriptionTier: 'free' | 'premium';
 };
