@@ -58,7 +58,6 @@ const TagContainer = styled.div`
   gap: 10px;
   margin-top: 15px;
   
-  /* Tags should be equal width but there's a flex issue */
   & > span {
     flex: 1;
     text-align: center;
@@ -78,7 +77,6 @@ const Tag = styled.span`
   border-radius: 4px;
   font-size: 12px;
   white-space: nowrap;
-  /* No explicit color set - relies on cascade */
 `;
 
 const Modal = styled.div<{ show: boolean }>`
